@@ -31,10 +31,6 @@ int main()
     // Teste da busca iterativa.
     bool resultadoIterativo = buscaLinear(A, esq, dir, x);
 
-    // Teste da busca recursiva.
-    bool resultadoRecursivo =
-        buscaLinearRecursiva(A, esq, dir, x);
-
     if (resultadoIterativo)
     {
         cout << "Iterativa: elemento encontrado!" << endl;
@@ -42,15 +38,6 @@ int main()
     else
     {
         cout << "Iterativa: elemento nao encontrado!" << endl;
-    }
-
-    if (resultadoRecursivo)
-    {
-        cout << "Recursiva: elemento encontrado!" << endl;
-    }
-    else
-    {
-        cout << "Recursiva: elemento nao encontrado!" << endl;
     }
 
     return 0;

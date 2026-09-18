@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 // 3 - Busca Sequencial Alternativa Iterativa
 bool buscaSequencialAlternativa(int A[], int esq, int dir, int x)
 {
@@ -31,4 +34,27 @@ bool buscaSequencialAlternativa(int A[], int esq, int dir, int x)
 
     // O elemento não foi encontrado.
     return false;
+}
+int main()
+{
+    int A[] = {7, 3, 9, 1, 5};
+
+    int x = 9;
+
+    int esq = 0;
+    int dir = 5;
+
+    bool resultado =
+        buscaSequencialAlternativa(A, esq, dir, x);
+
+    if (resultado)
+    {
+        cout << "Elemento encontrado!" << endl;
+    }
+    else
+    {
+        cout << "Elemento nao encontrado!" << endl;
+    }
+
+    return 0;
 }
