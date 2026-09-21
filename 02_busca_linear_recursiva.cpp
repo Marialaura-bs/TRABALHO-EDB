@@ -44,7 +44,7 @@ int main()
         // Define o valor que será procurado.
         // n - 1 coloca o elemento procurado na última posição,
         // representando o pior caso da busca linear.
-        int x = 0;
+        int x = n-1 ;
 
         // Define o início do intervalo de busca.
         int esq = 0;
