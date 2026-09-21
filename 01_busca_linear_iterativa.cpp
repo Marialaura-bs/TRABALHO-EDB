@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 using namespace std;
 
 // 1 - Busca Linear Iterativa
@@ -21,23 +22,47 @@ bool buscaLinear(int A[], int esq, int dir, int x) //chama todas as variaveis qu
 
 int main()
 {
-    int A[] = {7, 3, 9, 1, 5};
+    int tamanhos[] = {5000, 50000, 500000};
 
-    int x = 9;
-
-    int esq = 0;
-    int dir = 5;
-
-    // Teste da busca iterativa.
-    bool resultadoIterativo = buscaLinear(A, esq, dir, x);
-
-    if (resultadoIterativo)
+    for (int k = 0; k < 3; k++)
     {
-        cout << "Iterativa: elemento encontrado!" << endl;
-    }
-    else
-    {
-        cout << "Iterativa: elemento nao encontrado!" << endl;
+        int n = tamanhos[k];
+
+        int A[500000];
+
+        // Preenche o vetor.
+        for (int i = 0; i < n; i++)
+        {
+            A[i] = i;
+        }
+
+        int x = 0;
+        int esq = 0;
+        int dir = n;
+
+        long long soma = 0;
+
+        // Faz 5 execuções da busca.
+        for (int repeticao = 0; repeticao < 5; repeticao++)
+        {
+            auto inicio = chrono::high_resolution_clock::now();
+
+            bool resultado = buscaLinear(A, esq, dir, x);
+
+            auto fim = chrono::high_resolution_clock::now();
+
+            auto tempo = chrono::duration_cast<chrono::nanoseconds>(
+                fim - inicio
+            );
+
+            soma += tempo.count();
+        }
+
+        long long media = soma / 5;
+
+        cout << "n = " << n
+             << " | Media = " << media
+             << " ns" << endl;
     }
 
     return 0;
